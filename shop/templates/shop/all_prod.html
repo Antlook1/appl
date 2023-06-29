@@ -1,0 +1,51 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container py-5 min-height2">
+    <div class="row text-center pt-3">
+            <div class="col-lg-6 m-auto">
+    {% if product.count == 0 %}
+                    <h1 class="h1">По вашему запросу ничего не найдено</h1>
+            </div>
+    </div>
+        <div class="row">
+            <div class="col-lg-3">
+
+                {% else %}
+                    <h1 class="h2 pb-4">По вашему запросу найдено</h1>
+                {% endif %}
+                <ul class="list-unstyled templatemo-accordion">
+                    {% for c in categorys %}
+                    <li class="pb-3">
+                        <a class="collapsed d-flex justify-content-between h3 text-decoration-none" href="{{c.get_absolute_url}}">
+                            {{c.name}}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="row">
+                    {% for p in product %}
+                    <div class="col-md-4">
+                        <div class="card mb-4 product-wap rounded-0">
+                            <div class="card rounded-0">
+                                <a href="{{p.get_absolute_url}}"><img class="card-img rounded-0 img-fluid"  src="{{p.photo.url}}"></a>
+                            </div>
+                            <div class="card-body">
+                                <a href="shop-single.html" class="h3 text-decoration-none name-padding">{{p.name}}</a>
+                                <p class="text-center mb-0">{{p.price}} руб.</p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

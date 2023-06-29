@@ -1,0 +1,38 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+    <section>
+        <div class="container pb-5">
+            <div class="row">
+                <div class="col-lg-5 mt-5">
+                    <div class="single-card mb-3">
+                        <img class="card-img img-fluid" src="{{product.photo.url}}" alt="Card image cap" id="product-detail">
+                    </div>
+                </div>
+                <!-- col end -->
+                <div class="col-lg-7 mt-5">
+                    <div class="single-card">
+                        <div class="card-body">
+                            <h1 class="h2">{{product.name}}</h1>
+                            <p class="h3 py-2">{{product.price}} руб.</p>
+
+                            <h6>Описание:</h6>
+                            <p>{{product.desc}}</p>
+
+                            <form action="" method="GET">
+                                <input type="hidden" name="product-title" value="Activewear">
+                                <div class="row pb-3">
+                                    <div class="col d-grid">
+                                        <a class="btn btn-success btn-lg" href="{% url 'order' product.pk %}">Купить</a>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

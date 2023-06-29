@@ -1,0 +1,21 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="container py-5">
+        <div class="row text-center pt-3">
+            <div class="col-lg-6 m-auto">
+                <h1 class="h1">Категории товаров</h1>
+            </div>
+        </div>
+        <div class="row">
+            {% for c in categorys %}
+            <div class="col-12 col-md-4 p-5 mt-3 cat-flex">
+                <a href="{{c.get_absolute_url}}"><img src="{{c.photo.url}}" class=" img-fluid "></a>
+                <h5 class="text-center mt-3 mb-3">{{c.name}}</h5>
+                <p class="text-center"><a class="btn btn-success" href="{{c.get_absolute_url}}">За покупками</a></p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock %}
